@@ -1,4 +1,5 @@
-import { Product } from "../types/Product";
+import { Link } from "react-router-dom";
+import { Product } from "../types/product";
 
 interface Props {
   product: Product;
@@ -11,7 +12,7 @@ function ProductCard({ product }: Props) {
   );
 
   return (
-    <div className="border rounded-lg overflow-hidden shadow hover:shadow-lg transition bg-white">
+    <Link to={`/product/${product.id}`} className="block border rounded-lg overflow-hidden shadow hover:shadow-lg transition bg-white">
       <img
         src={product.image.url}
         alt={product.image.alt}
@@ -43,7 +44,7 @@ function ProductCard({ product }: Props) {
 
         <div className="text-yellow-500 text-sm">⭐ {product.rating}/5</div>
       </div>
-    </div>
+    </Link>
   );
 }
 

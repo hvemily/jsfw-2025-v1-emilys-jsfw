@@ -1,5 +1,5 @@
 import { useProducts } from "../features/products/useProducts";
-import ProductCard from "../components/ProductCard";
+import ProductCard from "../components/productCard";
 
 function Home() {
   const { products, loading, error } = useProducts();
