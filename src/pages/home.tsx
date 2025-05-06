@@ -1,5 +1,5 @@
-import { useProducts } from "../features/products/useProducts";
-import ProductCard from "../components/productCard";
+import { useProducts } from "../features/products/useProduct";
+import ProductCard from "../components/ProductCard";
 
 function Home() {
   const { products, loading, error } = useProducts();
@@ -14,7 +14,7 @@ function Home() {
   return (
     <div className="p-4 space-y-8">
       <section>
-        <h2 className="text-2xl font-bold mb-4">🔥 Popular Products</h2>
+        <h2 className="text-2xl font-bold mb-6">🔥 Popular Products</h2>
         <div className="grid grid-cols-2 md:grid-cols-3 gap-4">
           {popular.map((product) => (
             <ProductCard key={product.id} product={product} />
