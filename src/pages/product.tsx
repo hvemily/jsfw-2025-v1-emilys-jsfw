@@ -1,6 +1,8 @@
 import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
-import { Product } from "../types/product";
+import { Product } from "../types/Product";
+import { API_BASE } from "../constants/api";
+import AddToCartButton from "../components/AddToCartBtn";
 
 function ProductPage() {
   const { id } = useParams();
@@ -11,12 +13,12 @@ function ProductPage() {
   useEffect(() => {
     async function fetchProduct() {
       try {
-        const response = await fetch(`https://v2.api.noroff.dev/online-shop/${id}`);
+        const response = await fetch(`${API_BASE}/${id}`);
         if (!response.ok) {
           throw new Error("Failed to fetch product");
         }
         const data = await response.json();
-        setProduct(data.data);
+        setProduct(data.data); // Noroff API returnerer data inni .data
       } catch (err: unknown) {
         if (err instanceof Error) {
           setError(err.message);
@@ -27,9 +29,10 @@ function ProductPage() {
         setLoading(false);
       }
     }
-
-    fetchProduct();
+  
+    if (id) fetchProduct();
   }, [id]);
+  
 
   if (loading) return <p>Loading...</p>;
   if (error) return <p>Error: {error}</p>;
@@ -45,11 +48,9 @@ function ProductPage() {
       <h1 className="text-3xl font-bold mb-2">{product.title}</h1>
       <p className="mb-4">{product.description}</p>
       <p className="text-xl font-bold">
-        ${product.discountedPrice.toFixed(2)}
+        {product.discountedPrice.toFixed(2)} kr
       </p>
-      <button className="mt-4 bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700">
-        Add to Cart
-      </button>
+      <AddToCartButton product={product} />
     </div>
   );
 }

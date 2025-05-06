@@ -1,4 +1,4 @@
-import { useProducts } from "../features/products/useProduct";
+import { useProducts } from "../features/products/useProducts";
 import ProductCard from "../components/ProductCard";
 
 function Home() {

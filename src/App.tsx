@@ -1,6 +1,7 @@
 import { BrowserRouter, Routes, Route } from "react-router-dom";
-import Home from "../src/pages/home";
-import ProductPage from "../src/pages/product";
+import Home from "../src/pages/Home";
+import ProductPage from "../src/pages/Product";
+import Cart from "../src/pages/Cart";
 
 function App() {
   return (
@@ -8,6 +9,7 @@ function App() {
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/product/:id" element={<ProductPage />} />
+        <Route path="/cart" element={<Cart />} />
       </Routes>
     </BrowserRouter>
   );
