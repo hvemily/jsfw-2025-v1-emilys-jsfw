@@ -5,20 +5,26 @@ import { Product } from "../../types/products";
 
 export function useProducts() {
   const [products, setProducts] = useState<Product[]>([]);
-  const [loading, setLoading] = useState(true);
+  const [loading, setLoading] = useState<boolean>(true);
   const [error, setError] = useState<string | null>(null);
 
   useEffect(() => {
-    async function fetchData() {
+    const fetchData = async () => {
+      setLoading(true); // Sett loading til true i starten
+
       try {
         const data = await doFetch<Product[]>(API_BASE);
         setProducts(data);
-      } catch (err: any) {
-        setError(err.message || "An unknown error occurred");
+      } catch (err) {
+        if (err instanceof Error) {
+          setError(err.message);
+        } else {
+          setError("An unknown error occurred");
+        }
       } finally {
-        setLoading(false);
+        setLoading(false); // Alltid kjør dette til slutt
       }
-    }
+    };
 
     fetchData();
   }, []);
