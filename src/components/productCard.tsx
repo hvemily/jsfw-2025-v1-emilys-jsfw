@@ -1,5 +1,5 @@
 import { Link } from "react-router-dom";
-import { Product } from "../types/Product";
+import { Product } from "../types/products";
 
 interface Props {
   product: Product;

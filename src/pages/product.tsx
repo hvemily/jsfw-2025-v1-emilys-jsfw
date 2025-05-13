@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
-import { Product } from "../types/Product";
+import { Product } from "../types/products";
 import { API_BASE } from "../constants/api";
 import AddToCartButton from "../components/AddToCartBtn";
 

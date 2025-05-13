@@ -1,5 +1,5 @@
 import { create } from "zustand";
-import { Product } from "../../types/Product";
+import { Product } from "../../types/products";
 import { persist } from "zustand/middleware";
 
 export interface CartItem extends Product {

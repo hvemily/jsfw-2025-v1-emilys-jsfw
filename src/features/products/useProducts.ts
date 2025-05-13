@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import { doFetch } from "../../utils/doFetch";
 import { API_BASE } from "../../constants/api";
-import { Product } from "../../types/Product";
+import { Product } from "../../types/products";
 
 export function useProducts() {
   const [products, setProducts] = useState<Product[]>([]);
