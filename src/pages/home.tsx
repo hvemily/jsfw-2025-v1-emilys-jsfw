@@ -1,7 +1,7 @@
 import { useProducts } from "../features/products/useProducts";
 import ProductCard from "../components/ProductCard";
 
-function Home() {
+function home() {
   const { products, loading, error } = useProducts();
 
   if (loading) return <p>Loading...</p>;
@@ -43,4 +43,4 @@ function Home() {
   );
 }
 
-export default Home;
+export default home;

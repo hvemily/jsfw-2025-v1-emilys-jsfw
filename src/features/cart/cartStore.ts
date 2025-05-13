@@ -68,7 +68,7 @@ export const useCartStore = create<CartState>()(
       },
     }),
     {
-      name: "cart-storage", // Dette bestemmer nøkkelen i localStorage
+      name: "cart-storage", 
     }
   )
 );
