@@ -1,5 +1,10 @@
 {
-  "files": [],
+  "compilerOptions": {
+    "types": ["vitest"],
+    "module": "ESNext",
+    "target": "ESNext",
+    "jsx": "react-jsx"
+  },
   "references": [
     { "path": "./tsconfig.app.json" },
     { "path": "./tsconfig.node.json" }

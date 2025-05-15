@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { useParams } from "react-router-dom";
+import { useParams, Link } from "react-router-dom";
 import { Product } from "../types/products";
 import { API_BASE } from "../constants/api";
 import AddToCartButton from "../components/AddToCartBtn";
@@ -33,48 +33,47 @@ function ProductPage() {
   if (!product) return <p className="p-6 text-center">Product not found</p>;
 
   const isDiscounted = product.discountedPrice < product.price;
-  const discountPercent = Math.round(
+  const discount = Math.round(
     ((product.price - product.discountedPrice) / product.price) * 100
   );
 
   return (
-    <div className="max-w-screen-md mx-auto px-4 py-10">
-      <div className="grid md:grid-cols-2 gap-8">
-        {/* Image */}
-        {product.image?.url && (
-          <img
-            src={product.image.url}
-            alt={product.image.alt}
-            className="w-full h-auto object-cover rounded shadow"
-          />
-        )}
+    <div className="max-w-screen-xl mx-auto px-4 py-12 text-black">
+      <Link to="/" className="text-sm text-gray-500 hover:underline mb-6 inline-block">
+        ← Back to products
+      </Link>
 
-        {/* Product Info */}
-        <div className="flex flex-col justify-between space-y-4">
-          <div>
-            <h1 className="text-3xl font-bold text-black">{product.title}</h1>
-            <p className="text-gray-700 mt-2">{product.description}</p>
-          </div>
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-12">
+        {/* Product image */}
+        <div>
+        <img
+          src={product.image.url}
+          alt={product.image.alt}
+          className="w-full max-w-md h-auto mx-auto md:mx-0 rounded shadow"
+        />
+        </div>
 
-          {/* Prices */}
-          <div className="text-xl font-semibold text-black">
-            {product.discountedPrice.toFixed(2)} kr
-            {isDiscounted && (
+        {/* Product info */}
+        <div className="flex flex-col gap-4">
+          <h1 className="text-3xl font-bold">{product.title}</h1>
+
+          <p className="text-gray-600">{product.description}</p>
+
+          <div className="flex items-center gap-4 text-lg font-semibold mt-2">
+            {isDiscounted ? (
               <>
-                <span className="text-gray-400 text-base line-through ml-2">
-                  {product.price.toFixed(2)} kr
-                </span>
-                <span className="ml-2 text-sm bg-black text-white px-2 py-0.5 rounded">
-                  -{discountPercent}%
+                <span className="text-red-600 text-2xl">{product.discountedPrice.toFixed(2)} kr</span>
+                <span className="line-through text-gray-400">{product.price.toFixed(2)} kr</span>
+                <span className="bg-red-100 text-red-700 text-xs px-2 py-1 rounded">
+                  -{discount}%
                 </span>
               </>
+            ) : (
+              <span className="text-2xl">{product.price.toFixed(2)} kr</span>
             )}
           </div>
 
-          {/* Rating */}
-          {product.rating > 0 && (
-            <p className="text-sm text-yellow-600">⭐ {product.rating}/5</p>
-          )}
+          <p className="text-yellow-500 text-sm">⭐ {product.rating}/5</p>
 
           <AddToCartButton product={product} />
         </div>
