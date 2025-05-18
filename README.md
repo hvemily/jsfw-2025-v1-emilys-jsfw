@@ -9,7 +9,7 @@ This project is configured with:
 
 ---
 
-## 📁 Project Structure (tsconfig)
+## Project Structure (tsconfig)
 
 ```
 .
@@ -20,7 +20,7 @@ This project is configured with:
 
 ---
 
-## 🔧 tsconfig.json
+## tsconfig.json
 
 ```json
 {
@@ -42,7 +42,7 @@ This project is configured with:
 
 ---
 
-## 🧩 tsconfig.app.json
+## tsconfig.app.json
 
 Used for the `src/` folder and frontend logic:
 
@@ -59,7 +59,7 @@ Used for the `src/` folder and frontend logic:
 
 ---
 
-## ⚙️ tsconfig.node.json
+## tsconfig.node.json
 
 Used for `vite.config.ts` or other Node-related files:
 
@@ -76,7 +76,7 @@ Used for `vite.config.ts` or other Node-related files:
 
 ---
 
-## ✅ VS Code Tips
+## VS Code Tips
 
 - Make sure VS Code is **using the workspace TypeScript version** (click the TS version in the status bar when editing a `.ts` file).
 - If you're seeing TypeScript errors in referenced projects, run:
@@ -89,7 +89,7 @@ tsc --build
 
 ---
 
-## 📦 Build & Dev
+## Build & Dev
 
 Use the following commands (assuming Vite):
 
@@ -101,7 +101,7 @@ npm run test      # Run tests using Vitest
 
 ---
 
-## 🧪 Testing with Vitest
+## Testing with Vitest
 
 Make sure `vitest` and `@vitest/ui` are installed:
 
@@ -123,7 +123,7 @@ npx vitest --ui
 
 ---
 
-## 📝 Notes
+## Notes
 
 - The `composite: true` setting is required for any `tsconfig` that is referenced by another.
 - Referenced projects must allow emitting (`noEmit: false`) even if you're not emitting files, to satisfy TypeScript's constraints.
