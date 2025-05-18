@@ -4,14 +4,20 @@ import { MemoryRouter } from "react-router-dom";
 import ProductCard from "../components/ProductCard";
 
 const product = {
-  id: 1,
+  id: "1",
   title: "Test Product",
   price: 100,
   discountedPrice: 80,
-  rating: 4,
-  image: { url: "https://example.com/image.jpg", alt: "Test image" },
-  description: "A nice test product",
+  rating: 4.5,
+  description: "A product used for testing.",
+  image: {
+    url: "https://example.com/image.jpg",
+    alt: "Test image"
+  },
+  tags: ["test", "sample"],
+  reviews: []
 };
+
 
 describe("ProductCard", () => {
   it("renders the product title", () => {

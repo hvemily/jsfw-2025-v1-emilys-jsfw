@@ -2,18 +2,14 @@
   "compilerOptions": {
     "target": "ESNext",
     "module": "ESNext",
-    "moduleResolution": "NodeNext",
+    "moduleResolution": "Bundler",
     "jsx": "react-jsx",
+    "strict": true,
     "esModuleInterop": true,
     "skipLibCheck": true,
-    "resolveJsonModule": true,
-    "allowSyntheticDefaultImports": true,
-    "allowImportingTsExtensions": true,
-    "types": ["vitest", "node"]
+    "types": ["vitest", "jest", "node"],
+    "allowImportingTsExtensions": false
   },
-  "include": ["src", "vite.config.ts", "src/**/*.test.tsx"],
-  "references": [
-    { "path": "./tsconfig.app.json" },
-    { "path": "./tsconfig.node.json" }
-  ]
+  "include": ["src"],
+  "exclude": ["dist", "node_modules"]
 }
