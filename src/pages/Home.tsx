@@ -50,7 +50,7 @@ function Home() {
 
   return (
     <div className="bg-neutral-100 min-h-screen text-black">
-      {/* 🖤 Hero section */}
+      {/*  Hero section */}
       <section className="text-center py-20 bg-black text-white rounded-b-1xl">
         <h1 className="text-5xl font-extrabold mb-4 tracking-tight">Welcome to Marqet Co.</h1>
         <p className="text-lg text-gray-300 mb-6">
@@ -64,7 +64,7 @@ function Home() {
         </a>
       </section>
 
-      {/* 🔍 Search + sort */}
+      {/* Search + sort */}
       <div className="max-w-screen-xl mx-auto px-4 py-10">
         <div className="flex flex-col md:flex-row justify-between items-center gap-4 mb-10">
           <input
@@ -86,7 +86,7 @@ function Home() {
           </select>
         </div>
 
-        {/* 🔥 Popular */}
+        {/* Popular */}
         <section id="popular" className="mb-16">
           <h2 className="text-3xl font-bold mb-6 tracking-tight">🔥 Popular Products</h2>
           <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 xl:grid-cols-4 gap-8">
@@ -96,7 +96,7 @@ function Home() {
           </div>
         </section>
 
-        {/* 💸 On Sale */}
+        {/* On Sale */}
         <section className="mb-16">
           <h2 className="text-3xl font-bold mb-6 tracking-tight">💸 On Sale</h2>
           <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 xl:grid-cols-4 gap-8">
@@ -106,7 +106,7 @@ function Home() {
           </div>
         </section>
 
-        {/* 🆕 New Arrivals */}
+        {/* New Arrivals */}
         <section>
           <h2 className="text-3xl font-bold mb-6 tracking-tight">🆕 New Arrivals</h2>
           <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 xl:grid-cols-4 gap-8">

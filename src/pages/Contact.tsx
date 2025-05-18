@@ -1,26 +1,29 @@
 import { FormEvent, useState } from "react";
 import { useToast } from "../components/Toast";
 
+type FormFields = {
+  fullName: string;
+  subject: string;
+  email: string;
+  message: string;
+};
+
 export default function Contact() {
   const { addToast } = useToast();
 
-  const [formData, setFormData] = useState({
+  const initialFormState: FormFields = {
     fullName: "",
     subject: "",
     email: "",
     message: "",
-  });
+  };
 
-  const [errors, setErrors] = useState({
-    fullName: "",
-    subject: "",
-    email: "",
-    message: "",
-  });
+  const [formData, setFormData] = useState<FormFields>(initialFormState);
+  const [errors, setErrors] = useState<FormFields>(initialFormState);
 
   function validate() {
     let valid = true;
-    const newErrors = { fullName: "", subject: "", email: "", message: "" };
+    const newErrors: FormFields = { ...initialFormState };
 
     if (formData.fullName.trim().length < 3) {
       newErrors.fullName = "Full Name must be at least 3 characters";
@@ -43,27 +46,38 @@ export default function Contact() {
     return valid;
   }
 
-  function handleChange(e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) {
-    setFormData({ ...formData, [e.target.name]: e.target.value });
+  function handleChange(
+    e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
+  ) {
+    const { name, value } = e.target;
+
+    setFormData((prev) => ({
+      ...prev,
+      [name]: value,
+    }));
   }
 
   function handleSubmit(e: FormEvent) {
     e.preventDefault();
 
     if (validate()) {
+      console.log("Contact form submitted:", formData);
+
       addToast("Message sent successfully! ✅");
-      setFormData({ fullName: "", subject: "", email: "", message: "" });
-      setErrors({ fullName: "", subject: "", email: "", message: "" });
+      setFormData(initialFormState);
+      setErrors(initialFormState);
     } else {
       addToast("Please fix the errors in the form ❌");
     }
   }
 
+  const inputFields: (keyof FormFields)[] = ["fullName", "subject", "email"];
+
   return (
     <div className="max-w-screen-sm mx-auto px-4 py-10">
       <h1 className="text-3xl font-bold mb-6 text-black">Contact Us</h1>
       <form onSubmit={handleSubmit} className="space-y-5">
-        {["fullName", "subject", "email"].map((field) => (
+        {inputFields.map((field) => (
           <div key={field}>
             <label htmlFor={field} className="block font-medium text-black capitalize mb-1">
               {field === "fullName" ? "Full Name" : field}
@@ -72,13 +86,13 @@ export default function Contact() {
               type={field === "email" ? "email" : "text"}
               name={field}
               id={field}
-              value={(formData as any)[field]}
+              value={formData[field]}
               onChange={handleChange}
               className="w-full border border-gray-300 px-4 py-2 rounded"
             />
-            {errors[field as keyof typeof errors] && (
+            {errors[field] && (
               <p className="text-red-500 text-sm mt-1">
-                {errors[field as keyof typeof errors]}
+                {errors[field]}
               </p>
             )}
           </div>

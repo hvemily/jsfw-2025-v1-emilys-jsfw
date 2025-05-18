@@ -10,7 +10,7 @@ export function useProducts() {
 
   useEffect(() => {
     const fetchData = async () => {
-      setLoading(true); // Sett loading til true i starten
+      setLoading(true); 
 
       try {
         const data = await doFetch<Product[]>(API_BASE);
@@ -22,7 +22,7 @@ export function useProducts() {
           setError("An unknown error occurred");
         }
       } finally {
-        setLoading(false); // Alltid kjør dette til slutt
+        setLoading(false); 
       }
     };
 
