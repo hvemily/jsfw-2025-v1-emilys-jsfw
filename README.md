@@ -1,17 +1,42 @@
-# TypeScript Project Setup – Vite + React + Vitest
+# TypeScript + React + Vite Project – Course Assignment Documentation
 
-This project is configured with:
+This project is part of a course assignment and includes all required elements such as:
 
-- **Vite** for fast development and bundling
-- **React** for building UI components
-- **Vitest** for unit testing
-- **TypeScript** with [Project References](https://www.typescriptlang.org/docs/handbook/project-references.html) for a scalable and optimized setup
+- A TypeScript setup with strict type checking
+- Project references using `tsconfig.json`, `tsconfig.app.json`, and `tsconfig.node.json`
+- Vite as the development server and bundler
+- React for building the user interface
+- Vitest for testing
+- A `vite.config.ts` file as part of the build and development setup
+
+---
+
+## Assignment Requirements Checklist
+
+| Feature                       | Included | Details                                                         |
+| ----------------------------- | -------- | --------------------------------------------------------------- |
+| TypeScript project references | ✅       | `composite: true` and `noEmit: false` in all `tsconfig` files   |
+| React with JSX support        | ✅       | Configured with `jsx: react-jsx`                                |
+| Vite integration              | ✅       | Uses `vite.config.ts` and Vite scripts                          |
+| Vitest configured             | ✅       | Includes `types: ["vitest"]` and example setup                  |
+| Proper folder structure       | ✅       | Separated app and node config with clean build output           |
+| Source files in `src/`        | ✅       | Defined via `include: ["src"]`                                  |
+| Strict linting and typing     | ✅       | `strict`, `noUnusedLocals`, `noUncheckedSideEffectImports` etc. |
+
+---
+
+## Technologies Used
+
+- **TypeScript** – typed JavaScript for scalable apps
+- **React** – component-based frontend framework
+- **Vite** – lightning-fast dev server and build tool
+- **Vitest** – lightweight test runner for Vite projects
 
 ---
 
 ## Project Structure (tsconfig)
 
-```
+```txt
 .
 ├── tsconfig.json           # Root config that references others
 ├── tsconfig.app.json       # For React app logic in /src
@@ -37,14 +62,11 @@ This project is configured with:
 }
 ```
 
-> This is the **main entry** for the TypeScript compiler.  
-> It references the app and node configs for better structure and build performance.
+> Main entry file for TypeScript with project references enabled.
 
 ---
 
 ## tsconfig.app.json
-
-Used for the `src/` folder and frontend logic:
 
 ```json
 {
@@ -61,8 +83,6 @@ Used for the `src/` folder and frontend logic:
 
 ## tsconfig.node.json
 
-Used for `vite.config.ts` or other Node-related files:
-
 ```json
 {
   "compilerOptions": {
@@ -76,56 +96,31 @@ Used for `vite.config.ts` or other Node-related files:
 
 ---
 
-## VS Code Tips
-
-- Make sure VS Code is **using the workspace TypeScript version** (click the TS version in the status bar when editing a `.ts` file).
-- If you're seeing TypeScript errors in referenced projects, run:
+## Getting Started
 
 ```bash
-tsc --build
-```
-
-- Restart VS Code if issues persist (it helps recognize `composite` changes).
-
----
-
-## Build & Dev
-
-Use the following commands (assuming Vite):
-
-```bash
-npm run dev       # Start dev server
-npm run build     # Build project
-npm run test      # Run tests using Vitest
+npm install      # Install dependencies
+npm run dev      # Start Vite dev server
+npm run build    # Build the project
+npm run test     # Run tests with Vitest
 ```
 
 ---
 
 ## Testing with Vitest
 
-Make sure `vitest` and `@vitest/ui` are installed:
-
 ```bash
 npm install --save-dev vitest @vitest/ui
-```
-
-To run tests:
-
-```bash
-npx vitest
-```
-
-To open the interactive UI:
-
-```bash
-npx vitest --ui
+npx vitest        # Run tests
+npx vitest --ui   # Interactive test UI
 ```
 
 ---
 
 ## Notes
 
-- The `composite: true` setting is required for any `tsconfig` that is referenced by another.
-- Referenced projects must allow emitting (`noEmit: false`) even if you're not emitting files, to satisfy TypeScript's constraints.
+- Referenced tsconfigs must include `composite: true` and cannot use `noEmit: true`
+- `outDir` is necessary when using composite projects
+- Use `tsc --build` if you're working with multiple tsconfigs to compile all references
 
 ---
