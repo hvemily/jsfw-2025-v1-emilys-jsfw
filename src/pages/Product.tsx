@@ -15,16 +15,19 @@ function ProductPage() {
     if (!id) return;
 
     const ctrl = new AbortController();
+
     async function fetchProduct() {
       try {
         setLoading(true);
         setError(null);
+
         const response = await fetch(`${API_BASE}/${id}`, { signal: ctrl.signal });
         if (!response.ok) throw new Error("Failed to fetch product");
         const data = await response.json();
         setProduct(data?.data ?? null);
       } catch (err) {
-        if ((err as any)?.name === "AbortError") return;
+        // ✅ no explicit any: narrow aborts cleanly
+        if (err instanceof DOMException && err.name === "AbortError") return;
         setError(err instanceof Error ? err.message : "Something went wrong");
       } finally {
         setLoading(false);
